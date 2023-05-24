@@ -1,0 +1,9 @@
+C:\Users\sfpma\source\repos\DSP\DSP\bin\Model.asdatabase
+C:\Users\sfpma\source\repos\DSP\DSP\bin\Model.deploymenttargets
+C:\Users\sfpma\source\repos\DSP\DSP\bin\Model.deploymentoptions
+C:\Users\sfpma\source\repos\DSP\DSP\obj\Development\DSP.smproj.AssemblyReference.cache
+C:\Users\sfpma\source\repos\DSP\DSP\obj\Development\DSP.smproj.SuggestedBindingRedirects.cache
+C:\Users\sfpma\source\repos\DSP\DSP\obj\Development\DSP.smproj.CoreCompileInputs.cache
+C:\Users\sfpma\source\repos\DSP\DSP\obj\Development\Model.asdatabase
+C:\Users\sfpma\source\repos\DSP\DSP\obj\Development\Model.deploymentoptions
+C:\Users\sfpma\source\repos\DSP\DSP\obj\Development\Model.deploymenttargets

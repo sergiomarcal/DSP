@@ -1,0 +1,672 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "pt-PT",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/dsba-datawarehouse database windows net;Datawarehouse",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "dsba-datawarehouse.database.windows.net",
+            "database": "Datawarehouse"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "UsernamePassword",
+          "Username": "DSP9_GR01",
+          "EncryptConnection": true
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "DSP9_GR01 DimAirport",
+        "columns": [
+          {
+            "name": "AiportKey",
+            "dataType": "int64",
+            "sourceColumn": "AiportKey"
+          },
+          {
+            "name": "State",
+            "dataType": "string",
+            "sourceColumn": "State"
+          },
+          {
+            "name": "CityName",
+            "dataType": "string",
+            "sourceColumn": "CityName"
+          },
+          {
+            "name": "County",
+            "dataType": "string",
+            "sourceColumn": "County"
+          },
+          {
+            "name": "LocationLat",
+            "dataType": "double",
+            "sourceColumn": "LocationLat"
+          },
+          {
+            "name": "LocationLng",
+            "dataType": "double",
+            "sourceColumn": "LocationLng"
+          },
+          {
+            "name": "IATACode",
+            "dataType": "string",
+            "sourceColumn": "IATACode"
+          },
+          {
+            "name": "ICAOCode",
+            "dataType": "string",
+            "sourceColumn": "ICAOCode"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/dsba-datawarehouse database windows net;Datawarehouse\",",
+                "    DSP9_GR01_DimAirport = Source{[Schema=\"DSP9_GR01\",Item=\"DimAirport\"]}[Data]",
+                "in",
+                "    DSP9_GR01_DimAirport"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DSP9_GR01 Dimcompany",
+        "columns": [
+          {
+            "name": "CompanyKey",
+            "dataType": "int64",
+            "sourceColumn": "CompanyKey"
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "sourceColumn": "Description"
+          },
+          {
+            "name": "Code",
+            "dataType": "string",
+            "sourceColumn": "Code"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/dsba-datawarehouse database windows net;Datawarehouse\",",
+                "    DSP9_GR01_Dimcompany = Source{[Schema=\"DSP9_GR01\",Item=\"Dimcompany\"]}[Data]",
+                "in",
+                "    DSP9_GR01_Dimcompany"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DSP9_GR01 DimDate",
+        "columns": [
+          {
+            "name": "datekey",
+            "dataType": "int64",
+            "sourceColumn": "datekey"
+          },
+          {
+            "name": "FullDate",
+            "dataType": "dateTime",
+            "sourceColumn": "FullDate"
+          },
+          {
+            "name": "DayNumberOfWeek",
+            "dataType": "int64",
+            "sourceColumn": "DayNumberOfWeek"
+          },
+          {
+            "name": "DayNameOfWeek",
+            "dataType": "string",
+            "sourceColumn": "DayNameOfWeek"
+          },
+          {
+            "name": "WeekDayType",
+            "dataType": "string",
+            "sourceColumn": "WeekDayType"
+          },
+          {
+            "name": "DayNumberOfMonth",
+            "dataType": "int64",
+            "sourceColumn": "DayNumberOfMonth"
+          },
+          {
+            "name": "DayNumberOfYear",
+            "dataType": "int64",
+            "sourceColumn": "DayNumberOfYear"
+          },
+          {
+            "name": "WeekNumberOfYear",
+            "dataType": "int64",
+            "sourceColumn": "WeekNumberOfYear"
+          },
+          {
+            "name": "MonthNameOfYear",
+            "dataType": "string",
+            "sourceColumn": "MonthNameOfYear"
+          },
+          {
+            "name": "MonthNumberOfYear",
+            "dataType": "int64",
+            "sourceColumn": "MonthNumberOfYear"
+          },
+          {
+            "name": "QuarterNumberCalendar",
+            "dataType": "int64",
+            "sourceColumn": "QuarterNumberCalendar"
+          },
+          {
+            "name": "QuarterNameCalendar",
+            "dataType": "string",
+            "sourceColumn": "QuarterNameCalendar"
+          },
+          {
+            "name": "SemesterNumberCalendar",
+            "dataType": "int64",
+            "sourceColumn": "SemesterNumberCalendar"
+          },
+          {
+            "name": "SemesterNameCalendar",
+            "dataType": "string",
+            "sourceColumn": "SemesterNameCalendar"
+          },
+          {
+            "name": "YearCalendar",
+            "dataType": "int64",
+            "sourceColumn": "YearCalendar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/dsba-datawarehouse database windows net;Datawarehouse\",",
+                "    DSP9_GR01_DimDate = Source{[Schema=\"DSP9_GR01\",Item=\"DimDate\"]}[Data]",
+                "in",
+                "    DSP9_GR01_DimDate"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DSP9_GR01 Dimhour",
+        "columns": [
+          {
+            "name": "HourKey",
+            "dataType": "int64",
+            "sourceColumn": "HourKey"
+          },
+          {
+            "name": "Hour",
+            "dataType": "string",
+            "sourceColumn": "Hour"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/dsba-datawarehouse database windows net;Datawarehouse\",",
+                "    DSP9_GR01_Dimhour = Source{[Schema=\"DSP9_GR01\",Item=\"Dimhour\"]}[Data]",
+                "in",
+                "    DSP9_GR01_Dimhour"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DSP9_GR01 DimFlights",
+        "columns": [
+          {
+            "name": "FlightKey",
+            "dataType": "int64",
+            "sourceColumn": "FlightKey"
+          },
+          {
+            "name": "OriginAirport",
+            "dataType": "string",
+            "sourceColumn": "OriginAirport"
+          },
+          {
+            "name": "DestinationAirport",
+            "dataType": "string",
+            "sourceColumn": "DestinationAirport"
+          },
+          {
+            "name": "CompanyCode",
+            "dataType": "string",
+            "sourceColumn": "CompanyCode"
+          },
+          {
+            "name": "Flightnumber",
+            "dataType": "string",
+            "sourceColumn": "Flightnumber"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/dsba-datawarehouse database windows net;Datawarehouse\",",
+                "    DSP9_GR01_DimFlights = Source{[Schema=\"DSP9_GR01\",Item=\"DimFlights\"]}[Data]",
+                "in",
+                "    DSP9_GR01_DimFlights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DSP9_GR01 DimPlanes",
+        "columns": [
+          {
+            "name": "PlaneKey",
+            "dataType": "int64",
+            "sourceColumn": "PlaneKey"
+          },
+          {
+            "name": "Tailnumber",
+            "dataType": "string",
+            "sourceColumn": "Tailnumber"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/dsba-datawarehouse database windows net;Datawarehouse\",",
+                "    DSP9_GR01_DimPlanes = Source{[Schema=\"DSP9_GR01\",Item=\"DimPlanes\"]}[Data]",
+                "in",
+                "    DSP9_GR01_DimPlanes"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DSP9_GR01 DimWeathertype",
+        "columns": [
+          {
+            "name": "TypeKey",
+            "dataType": "int64",
+            "sourceColumn": "TypeKey"
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "sourceColumn": "Description"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/dsba-datawarehouse database windows net;Datawarehouse\",",
+                "    DSP9_GR01_DimWeathertype = Source{[Schema=\"DSP9_GR01\",Item=\"DimWeathertype\"]}[Data]",
+                "in",
+                "    DSP9_GR01_DimWeathertype"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DSP9_GR01 FlightFact",
+        "columns": [
+          {
+            "name": "ID",
+            "dataType": "int64",
+            "sourceColumn": "ID"
+          },
+          {
+            "name": "Date",
+            "dataType": "int64",
+            "sourceColumn": "Date"
+          },
+          {
+            "name": "FlightKey",
+            "dataType": "int64",
+            "sourceColumn": "FlightKey"
+          },
+          {
+            "name": "PlaneKey",
+            "dataType": "int64",
+            "sourceColumn": "PlaneKey"
+          },
+          {
+            "name": "CompanyKey",
+            "dataType": "int64",
+            "sourceColumn": "CompanyKey"
+          },
+          {
+            "name": "CarrierDelay",
+            "dataType": "int64",
+            "sourceColumn": "CarrierDelay"
+          },
+          {
+            "name": "WeatherDelay",
+            "dataType": "int64",
+            "sourceColumn": "WeatherDelay"
+          },
+          {
+            "name": "NASDelay",
+            "dataType": "int64",
+            "sourceColumn": "NASDelay"
+          },
+          {
+            "name": "SecurityDelay",
+            "dataType": "int64",
+            "sourceColumn": "SecurityDelay"
+          },
+          {
+            "name": "DepartureHour",
+            "dataType": "int64",
+            "sourceColumn": "DepartureHour"
+          },
+          {
+            "name": "Diverted_Airport",
+            "dataType": "int64",
+            "sourceColumn": "Diverted_Airport"
+          },
+          {
+            "name": "IsDelayed",
+            "dataType": "boolean",
+            "sourceColumn": "IsDelayed"
+          },
+          {
+            "name": "isDiverted",
+            "dataType": "boolean",
+            "sourceColumn": "isDiverted"
+          },
+          {
+            "name": "DelayMin",
+            "dataType": "int64",
+            "sourceColumn": "DelayMin"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/dsba-datawarehouse database windows net;Datawarehouse\",",
+                "    DSP9_GR01_FlightFact = Source{[Schema=\"DSP9_GR01\",Item=\"FlightFact\"]}[Data]",
+                "in",
+                "    DSP9_GR01_FlightFact"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DSP9_GR01 Severity",
+        "columns": [
+          {
+            "name": "Description",
+            "dataType": "string",
+            "sourceColumn": "Description"
+          },
+          {
+            "name": "SeverityKey",
+            "dataType": "int64",
+            "sourceColumn": "SeverityKey"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/dsba-datawarehouse database windows net;Datawarehouse\",",
+                "    DSP9_GR01_Severity = Source{[Schema=\"DSP9_GR01\",Item=\"Severity\"]}[Data]",
+                "in",
+                "    DSP9_GR01_Severity"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DSP9_GR01 DimWeatherSeverity",
+        "columns": [
+          {
+            "name": "SeverityKey",
+            "dataType": "int64",
+            "sourceColumn": "SeverityKey"
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "sourceColumn": "Description"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/dsba-datawarehouse database windows net;Datawarehouse\",",
+                "    DSP9_GR01_DimWeatherSeverity = Source{[Schema=\"DSP9_GR01\",Item=\"DimWeatherSeverity\"]}[Data]",
+                "in",
+                "    DSP9_GR01_DimWeatherSeverity"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DSP9_GR01 WeatherFact",
+        "columns": [
+          {
+            "name": "key",
+            "dataType": "int64",
+            "sourceColumn": "key"
+          },
+          {
+            "name": "SeverityKey",
+            "dataType": "int64",
+            "sourceColumn": "SeverityKey"
+          },
+          {
+            "name": "typeKey",
+            "dataType": "int64",
+            "sourceColumn": "typeKey"
+          },
+          {
+            "name": "DateKeyStart",
+            "dataType": "int64",
+            "sourceColumn": "DateKeyStart"
+          },
+          {
+            "name": "DateKeyEnd",
+            "dataType": "int64",
+            "sourceColumn": "DateKeyEnd"
+          },
+          {
+            "name": "starttime",
+            "dataType": "int64",
+            "sourceColumn": "starttime"
+          },
+          {
+            "name": "EndTime",
+            "dataType": "int64",
+            "sourceColumn": "EndTime"
+          },
+          {
+            "name": "Precipitation",
+            "dataType": "int64",
+            "sourceColumn": "Precipitation"
+          },
+          {
+            "name": "Airport",
+            "dataType": "string",
+            "sourceColumn": "Airport"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/dsba-datawarehouse database windows net;Datawarehouse\",",
+                "    DSP9_GR01_WeatherFact = Source{[Schema=\"DSP9_GR01\",Item=\"WeatherFact\"]}[Data]",
+                "in",
+                "    DSP9_GR01_WeatherFact"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "56c8427d-141d-4894-ad16-e2813293a564",
+        "fromTable": "DSP9_GR01 FlightFact",
+        "fromColumn": "CompanyKey",
+        "toTable": "DSP9_GR01 Dimcompany",
+        "toColumn": "CompanyKey"
+      },
+      {
+        "name": "2bb61863-e280-46f2-a9f1-1f41a86eaffd",
+        "fromTable": "DSP9_GR01 FlightFact",
+        "fromColumn": "PlaneKey",
+        "toTable": "DSP9_GR01 DimPlanes",
+        "toColumn": "PlaneKey"
+      },
+      {
+        "name": "efbebe24-b54f-4830-afcc-71cab75b86fd",
+        "fromTable": "DSP9_GR01 FlightFact",
+        "fromColumn": "Date",
+        "toTable": "DSP9_GR01 DimDate",
+        "toColumn": "datekey"
+      },
+      {
+        "name": "8d41e92f-7ada-422f-8eca-b4e2bf1beb3f",
+        "fromTable": "DSP9_GR01 FlightFact",
+        "fromColumn": "DepartureHour",
+        "toTable": "DSP9_GR01 Dimhour",
+        "toColumn": "HourKey"
+      },
+      {
+        "name": "d676eaf5-1759-4dcb-b3b1-7232f5f6fb13",
+        "fromTable": "DSP9_GR01 FlightFact",
+        "fromColumn": "FlightKey",
+        "toTable": "DSP9_GR01 DimFlights",
+        "toColumn": "FlightKey"
+      },
+      {
+        "name": "cc8fc083-73be-4113-bb59-806ac00eae18",
+        "fromTable": "DSP9_GR01 DimFlights",
+        "fromColumn": "OriginAirport",
+        "toTable": "DSP9_GR01 DimAirport",
+        "toColumn": "AiportKey"
+      },
+      {
+        "name": "e51b17a3-97fa-4f3f-a0af-b89ba35890ad",
+        "fromTable": "DSP9_GR01 DimFlights",
+        "fromColumn": "DestinationAirport",
+        "toTable": "DSP9_GR01 DimAirport",
+        "toColumn": "AiportKey",
+        "isActive": false
+      }
+    ],
+    "roles": [
+      {
+        "name": "Admin",
+        "modelPermission": "administrator",
+        "members": [
+          {
+            "memberName": "I26131@students.isegexecutive.education",
+            "memberId": "I26131@students.isegexecutive.education",
+            "identityProvider": "AzureAD"
+          },
+          {
+            "memberName": "I28963@students.isegexecutive.education",
+            "memberId": "I28963@students.isegexecutive.education",
+            "identityProvider": "AzureAD"
+          },
+          {
+            "memberName": "I29014@students.isegexecutive.education",
+            "memberId": "I29014@students.isegexecutive.education",
+            "identityProvider": "AzureAD"
+          },
+          {
+            "memberName": "I29219@students.isegexecutive.education",
+            "memberId": "I29219@students.isegexecutive.education",
+            "identityProvider": "AzureAD"
+          },
+          {
+            "memberName": "I29231@students.isegexecutive.education",
+            "memberId": "I29231@students.isegexecutive.education",
+            "identityProvider": "AzureAD"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "700"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
